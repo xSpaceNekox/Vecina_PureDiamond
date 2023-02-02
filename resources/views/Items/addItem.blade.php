@@ -21,7 +21,8 @@
         </style>
     </head>
 
-    <body class="bg-gray-100"> 
+    <body class="bg-gray-100">
+        
 
         <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
@@ -45,74 +46,62 @@
         </div>
         </nav> 
         
-        <div class="relative overflow-x-auto mt-3 max-w-7xl mx-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Item ID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Item Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Brand ID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Item Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Item UOM
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            MinStock
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            ReorderQty
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Is Active
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                @foreach ($data as $items)
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{$items->ItemID}}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{$items->ItemName}}
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->BrandID}}
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->ItemPrice}}
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->ItemUOM}}
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->MinStock}}
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->ReorderQty}} 
-                        </td>
-                        <td class="px-6 py-4">
-                          {{$items->IsActive}} 
-                        </td>
-                        <td class="px-6 py-4 flex">
-                        <a type="button" href="/viewItem/{{$items->ItemID}}" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:focus:ring-yellow-900">Update</a>
-                        <a type="button" href="/deleteItem/{{$items->ItemID}}" class="text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:focus:ring-red-900">Delete</a>
-                        </td>
-                    </tr>
-                    @endforeach 
-                </tbody>
-            </table>
+        <div class="max-w-xl mx-auto mt-3 bg-white p-6 rounded-lg">
+            <h3 class= "text-2xl font-bold">ADD ITEMS</h3>
+            <form action="/storeItem" method="POST">
+            @csrf
+            <div class="mt-3">
+               <label class="font-bold">Item Name:</label>
+               <input type="text" id="ItemName" name="ItemName" class="w-full border rounded-lg shadow-sm indent-3 text-lg" required> 
+            </div>
+            <div class="mt-3">
+               <label class="font-bold">Item Price:</label>
+               <input type="number" id="ItemPrice" name="ItemPrice" step=".01" class="w-full border rounded-lg shadow-sm indent-3 text-lg" required> 
+            </div>
+            <div class="mt-3">
+               <label class="font-bold">Item UOM:</label>
+               <select name="ItemUOM" id="ItemUOM" class="w-full border rounded-lg shadow-sm indent-3 text-lg">
+                    <option value="Pc">Pc</option>
+                    <option value="Pack/2s">Pack/2s</option>
+                    <option value="Pack/24s">Pack/24s</option>
+                    <option value="Box/10s">Box/10s</option>
+               </select>
+            </div>
+            <div class="mt-3">
+               <label class="font-bold">Brand ID:</label>
+               <select name="BrandID" id="BrandID" class="w-full border rounded-lg shadow-sm indent-3 text-lg">
+               @foreach ($brandData as $brand)
+                    <option value="{{$brand->BrandID}}">{{$brand->BrandName}}</option>
+               @endforeach
+               </select>
+               
+            </div>
+            <div class="mt-3">
+               <label class="font-bold">MinStock:</label>
+               <input type="number" id="MinStock" name="MinStock"  class="w-full border rounded-lg shadow-sm indent-3 text-lg" required> 
+            </div>
+            <div class="mt-3">
+               <label class="font-bold">ReorderQty:</label>
+               <input type="text" id="ReorderQty" name="ReorderQty"  class="w-full border rounded-lg shadow-sm indent-3 text-lg" required> 
+            </div>
+            <div class ="mt-1">
+               <label class="font-bold">IS ACTIVE:</label>
+               <select name="IsActive" id="IsActive" class="w-full border rounded-lg shadow-sm indent-3 text-lg">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+               </select>
+            </div>
+            <div class="flex justify-end mt-3">
+            <input type="submit" value = "Add" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <a href="/items" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cancel</a>
+            </div>
+            </form>
+       
+
+
+
+            
+
             <div class= "mt-3">
                 @if(session('error'))
                 <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -120,18 +109,9 @@
                 </div>
                 @endif
             </div>
-            <div class= "mt-3">
-                @if(session('success'))
-                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-                <span class="font-medium">SUCCESS:</span> {{session('success')}}
-                </div>
-                @endif
-            </div>
         </div>
-        
-        <div class="flex justify-center mt-3">
-        <a href='/addItem' type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Item</a>
-        </div>
-        
+
+
+
     </body>
 </html>

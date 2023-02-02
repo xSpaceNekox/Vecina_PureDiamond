@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>BRANDS</title>
+        <title>PDE | BRANDS</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,7 @@
     </head>
 
     <body class="bg-gray-100">
-        
-
+    
         <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center">
@@ -41,9 +40,6 @@
                 <li>
                 <a href="/items" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Items</a>
                 </li>
-                <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Check Inventory</a>
-                </li>
             </ul>
             </div>
         </div>
@@ -52,11 +48,11 @@
         <div class="max-w-xl mx-auto mt-3 bg-white p-6 rounded-lg">
             <h3 class= "text-2xl font-bold">UPDATE BRAND</h3>
             @foreach ($data as $items)
-                <form action="/storeBrand" method="POST">
+                <form action="/updateBrand" method="POST">
                 @csrf
                     <div class="mt-3">
                         <label class="font-bold">Brand ID:</label>
-                        <input type="text" id="BrandID" name="Brand" value="{{$items->BrandID}}" class="w-full border rounded-lg shadow-sm indent-3 text-lg" required readonly> 
+                        <input type="text" id="BrandID" name="BrandID" value="{{$items->BrandID}}" class="w-full border rounded-lg shadow-sm indent-3 text-lg" required readonly> 
                     </div>
                     <div class="mt-3">
                         <label class="font-bold">Brand Name:</label>
@@ -70,7 +66,7 @@
                         </select>
                     </div>
                     <div class="flex justify-end mt-3">
-                        <input type="submit" value = "Add" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <input type="submit" value = "Update" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <a href="/brand" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cancel</a>
                     </div>
                 </form>

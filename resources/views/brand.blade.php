@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>BRANDS</title>
+        <title>PDE | BRANDS</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -39,9 +39,6 @@
                 </li>
                 <li>
                 <a href="/items" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Items</a>
-                </li>
-                <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Check Inventory</a>
                 </li>
             </ul>
             </div>
@@ -79,14 +76,29 @@
                             {{$items->IsActive}}
                         </td>
                         <td class="px-6 py-4">
-                            <a type="button" href="/viewBrand/{{$items->BrandID}}" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">Update</a>
+                            <a type="button" href="/viewBrand/{{$items->BrandID}}" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:focus:ring-yellow-900">Update</a>
+                            <a type="button" href="/deleteBrand/{{$items->BrandID}}" class="text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:focus:ring-red-900">Delete</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class= "mt-3">
+                @if(session('error'))
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">ERROR:</span> {{session('error')}}
+                </div>
+                @endif
+            </div>
+            <div class= "mt-3">
+                @if(session('success'))
+                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <span class="font-medium">SUCCESS:</span> {{session('success')}}
+                </div>
+                @endif
+            </div>
         </div>
-
+        
         <div class="flex justify-center mt-3">
         <a href='/addBrand' type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add New Brand</a>
         </div>
