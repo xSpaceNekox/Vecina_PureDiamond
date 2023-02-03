@@ -49,19 +49,24 @@ class TblItemsController extends Controller
 
     public function updateItem(Request $request){
         $searchItem = Item::where('ItemID','!=',$request->ItemID)->where('ItemName',$request->ItemName)->count();
-        
-        if($searchItem == 0){
-            $item = Item::find($request->ItemID);
-            $item->ItemName = $request->ItemName;
-            $item->ItemPrice = $request->ItemPrice;
-            $item->ItemUOM = $request->ItemUOM;
-            $item->BrandID = $request->BrandID;
-            $item->MinStock = $request->MinStock;
-            $item->ReorderQty = $request->ReorderQty;
-            $item->IsActive = $request->IsActive;
-            $item->save();
+        $search = Item::where('ItemID',$request->ItemID)->first();
 
-            return redirect('/items')->with('success','Inventory item has been updated.');
+        if($searchItem == 0){
+            if($search->ItemName == $request->ItemName && $search->ItemPrice == $request->ItemPrice && $search->ItemUOM == $request->ItemUOM && $search->BrandID == $request->BrandID && $search->MinStock == $request->MinStock && $search->ReorderQty == $request->ReorderQty && $search->IsActive == $request->IsActive) {
+                return redirect()->back();
+            } else {
+                $item = Item::find($request->ItemID);
+                $item->ItemName = $request->ItemName;
+                $item->ItemPrice = $request->ItemPrice;
+                $item->ItemUOM = $request->ItemUOM;
+                $item->BrandID = $request->BrandID;
+                $item->MinStock = $request->MinStock;
+                $item->ReorderQty = $request->ReorderQty;
+                $item->IsActive = $request->IsActive;
+                $item->save();
+    
+                return redirect('/items')->with('success','Inventory item has been updated.');
+            }
         }else {
             return redirect()->back()->with('error','Inventory item already exist in the database.');
         }

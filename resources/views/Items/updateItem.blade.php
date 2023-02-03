@@ -63,7 +63,7 @@
                         <label class="font-bold">Brand ID:</label>
                         <select name="BrandID" id="BrandID" class="w-full border rounded-lg shadow-sm indent-3 text-lg">
                         @foreach ($brandData as $brand)
-                            <option value="{{$brand->BrandID}}">{{$brand->BrandName}}</option>
+                            <option value="{{$brand->BrandID}}" {{ ( $brand->BrandID == $items->BrandID) ? 'selected' : '' }}>{{$brand->BrandName}}</option>
                         @endforeach
                </select>
                     </div>
@@ -74,10 +74,10 @@
                     <div class="mt-3">
                         <label class="font-bold">Item UOM</label>
                         <select name="ItemUOM" id="ItemUOM" class="w-full border rounded-lg shadow-sm indent-3 text-lg">
-                            <option value="Pc">Pc</option>
-                            <option value="Pack/2s">Pack/2s</option>
-                            <option value="Pack/24s">Pack/24s</option>
-                            <option value="Box/10s">Box/10s</option>
+                            <option value="Pc" {{ ( $items->ItemUOM == 'Pc') ? 'selected' : '' }} >Pc</option>
+                            <option value="Pack/2s" {{ ( $items->ItemUOM == 'Pack/2s') ? 'selected' : '' }}>Pack/2s</option>
+                            <option value="Pack/24s" {{ ( $items->ItemUOM == 'Pack/24s') ? 'selected' : '' }}>Pack/24s</option>
+                            <option value="Box/10s" {{ ( $items->ItemUOM == 'Box/10s') ? 'selected' : '' }}>Box/10s</option>
                         </select>
                     </div>
                     <div class="mt-3">
@@ -91,8 +91,8 @@
                     <div class ="mt-1">
                         <label class="font-bold">IS ACTIVE:</label>
                         <select name="IsActive" id="IsActive" class="w-full border rounded-lg shadow-sm indent-3 text-lg" value="{{$items->IsActive}}">
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="Yes" {{ ( $items->ItemUOM == 'Box/10s') ? 'Yes' : '' }}>Yes</option>
+                            <option value="No" {{ ( $items->ItemUOM == 'Box/10s') ? 'No' : '' }}>No</option>
                         </select>
                     </div>
                     <div class="flex justify-end mt-3">
