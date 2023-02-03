@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    public function index(){
-        $data = Brand::get();
+    public function index(Request $request){
+        $data = Brand::where('BrandName', 'LIKE','%'.$request->search.'%')->get();
         return view('brand',compact('data'));
     }
 
@@ -63,6 +63,7 @@ class BrandController extends Controller
         }
        
     }
+<<<<<<< Updated upstream
 
     public function search(Request $request)
 {
@@ -78,3 +79,6 @@ class BrandController extends Controller
 
 
 }
+=======
+}
+>>>>>>> Stashed changes
