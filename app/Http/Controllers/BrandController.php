@@ -64,5 +64,17 @@ class BrandController extends Controller
        
     }
 
+    public function search(Request $request)
+{
+    $searchTerm = $request->input('searchTerm');
+
+    $results = Brand::table('table_name')
+                ->where('column_name', 'like', "%{$searchTerm}%")
+                ->get();
+
+    return view('results', compact('results'));
+}
+
+
 
 }
