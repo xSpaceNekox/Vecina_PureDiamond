@@ -93,6 +93,7 @@
                         <select name="IsActive" id="IsActive" class="w-full border rounded-lg shadow-sm indent-3 text-lg" value="{{$items->IsActive}}">
                             <option value="Yes" {{ ( $items->ItemUOM == 'Box/10s') ? 'Yes' : '' }}>Yes</option>
                             <option value="No" {{ ( $items->ItemUOM == 'Box/10s') ? 'No' : '' }}>No</option>
+                            {{-- edited here --}}
                         </select>
                     </div>
                     <div class="flex justify-end mt-3">
