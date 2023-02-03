@@ -59,14 +59,14 @@ class BrandController extends Controller
     }
 
     public function deleteBrand($id){
-        try{
+        try{    
             $brand = Brand::find($id);
             $brand->delete();
             return redirect('/brand')->with('success',' Brand has been deleted');;
         } catch(Exception $e) {
             return redirect()->back()->with('error','Brand cannot be deleted. This item is referred to by another object.');
         }
-       
+     //sample
     }
 
 }
