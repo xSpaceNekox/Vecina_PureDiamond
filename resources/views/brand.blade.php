@@ -45,7 +45,8 @@
         </div>
         </nav> 
         
-        <div class="relative overflow-x-auto mt-3 max-w-7xl mx-auto"> 
+        <div class="relative overflow-x-auto mt-3 max-w-7xl mx-auto">
+          <!-- Brand SearchBar -->     
         <div class="flex justify-end mt-3">   
         <form action="">
             <input type="search" name="search">

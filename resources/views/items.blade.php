@@ -46,7 +46,8 @@
         </nav> 
         
         <div class="relative overflow-x-auto mt-3 max-w-7xl mx-auto">
-        <div class="flex justify-end mt-3">   
+        <div class="flex justify-end mt-3">
+        <!-- Item SearchBar -->  
         <form action="">
             <input type="search" name="search">
             <button type="submit" class="text-white bg-purple-400 hover:bg-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-1 text-center mr-2 mb-2 dark:focus:ring-purple-900">Search</button>
