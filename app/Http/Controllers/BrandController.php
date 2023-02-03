@@ -40,14 +40,20 @@ class BrandController extends Controller
 
     public function updateBrand(Request $request){
         $searchBrand = Brand::where('BrandID','!=',$request->BrandID)->where('BrandName',$request->BrandName)->count();
+        $search = Brand::where('BrandID',$request->BrandID)->first();
         
         if($searchBrand == 0){
-            $brand = Brand::find($request->BrandID);
-            $brand->BrandName = $request->BrandName;
-            $brand->IsActive = $request->IsActive;
-            $brand->save();
 
-            return redirect('/brand')->with('success','Brand has been updated.');
+            if($search->BrandID == $request->BrandID && $search->BrandName == $request->BrandName && $search->IsActive == $request->IsActive) {
+                return redirect()->back();
+            } else {
+                $brand = Brand::find($request->BrandID);
+                $brand->BrandName = $request->BrandName;
+                $brand->IsActive = $request->IsActive;
+                $brand->save();
+    
+                return redirect('/brand')->with('success','Brand has been updated.');
+            }
         }else {
             return redirect()->back()->with('error','Brand name already exist in the database.');
         }
