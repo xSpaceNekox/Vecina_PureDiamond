@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 class TblItemsController extends Controller
 {
-    public function index(){
-        $data = Item::get();
+    public function index(Request $request){
+        $data = Item::where('ItemName', 'LIKE','%'.$request->search.'%')->get();
         return view('items',compact('data'));
     }
 
