@@ -61,8 +61,8 @@
                     <div class ="mt-1">
                         <label class="font-bold">IS ACTIVE:</label>
                         <select name="IsActive" id="IsActive" class="w-full border rounded-lg shadow-sm indent-3 text-lg" value="{{$items->IsActive}}">
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="Yes" {{ ( $items->IsActive == 'Yes') ? 'selected' : '' }}>Yes</option>
+                            <option value="No" {{ ( $items->IsActive == 'No') ? 'selected' : '' }}>No</option>
                         </select>
                     </div>
                     <div class="flex justify-end mt-3">
