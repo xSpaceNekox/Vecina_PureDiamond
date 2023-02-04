@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('tbl_brand', function (Blueprint $table) {
             $table->id('BrandID');
             $table->string('BrandName');
-            $table->string('IsActive')->default('yes');
+            $table->string('IsActive')->default('Yes');
             $table->timestamps();
         });
 
