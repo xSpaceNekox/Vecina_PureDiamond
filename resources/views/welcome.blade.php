@@ -414,9 +414,90 @@
             </div>
         </div>
     </nav>
-    <div class="flex justify-center mt-5">
+    <div class="flex justify-center mt-3">
         <p class="max-w-mg text-3xl font-semibold leading-loose text-gray-900 dark:text-white">WELCOME TO PURE DIAMOND ENTERPRISE</p>
     </div>
+
+    <div class="d-flex justify-center">
+        <div class="flex justify-center ml-auto p-2 ">
+            <div class="shadow-lg rounded-lg overflow-hidden">
+                <div class="py-3 px-5 bg-gray-50">Total number of Brands and Items</div>
+                <canvas class="p-10" id="chartDoughnut"></canvas>
+            </div>
+
+            <!-- Required chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <!-- Chart doughnut -->
+            <script>
+                const dataDoughnut = {
+                    labels: ["Brands", "Items", ],
+                    datasets: [{
+                        label: "Total number of Brands and Items",
+                        data: [3, 3],
+                        backgroundColor: [
+                            "rgb(133, 105, 241)",
+                            "rgb(164, 101, 241)",
+                        ],
+                        hoverOffset: 4,
+                    }, ],
+                };
+
+                const configDoughnut = {
+                    type: "doughnut",
+                    data: dataDoughnut,
+                    options: {},
+                };
+
+                var chartBar = new Chart(
+                    document.getElementById("chartDoughnut"),
+                    configDoughnut
+                );
+            </script>
+
+            <div class="flex shadow-lg rounded-lg overflow-hidden">
+                <div class="py-3 px-5 bg-gray-50">Items Added in Months</div>
+                <canvas class="p-10" id="chartLine"></canvas>
+            </div>
+
+            <!-- Required chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <!-- Chart line -->
+            <script>
+                const labels = ["January", "February", "March", "April", "May", "June"];
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: "Items",
+                        backgroundColor: "hsl(252, 82.9%, 67.8%)",
+                        borderColor: "hsl(252, 82.9%, 67.8%)",
+                        data: [0, 10, 5, 2, 20, 30, 45],
+                    }, ],
+                };
+
+                const configLineChart = {
+                    type: "line",
+                    data,
+                    options: {},
+                };
+
+                var chartLine = new Chart(
+                    document.getElementById("chartLine"),
+                    configLineChart
+                );
+            </script>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
 
 
 </body>
