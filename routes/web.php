@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TblItemsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,10 @@ Route::post('/storeItem',[TblItemsController::class,'store']);
 Route::get('/viewItem/{id}',[TblItemsController::class,'viewItem']);
 Route::post('/updateItem',[TblItemsController::class,'updateItem']);
 Route::get('/deleteItem/{id}',[TblItemsController::class,'deleteItem']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/login', 'LoginController@showLoginForm')->name('login');
+Route::post('/login', 'LoginController@login');
